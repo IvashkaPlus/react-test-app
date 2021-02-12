@@ -4,8 +4,8 @@ import './App.css';
 class App extends Component {
   render() {
       const divStyle = {
-          'text-align': 'center',
-          'color': 'red'
+          textAlign: 'center',
+          color: 'red'
       };
 
 
