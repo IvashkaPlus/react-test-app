@@ -12,15 +12,13 @@ class App extends Component {
         this.state = {
             cars: [
                 { name: 'Ford', year: 2018 },
-                // { name: 'Audi', year: 2020 },
-                // { name: 'Mazda', year: 2014 }
+                { name: 'Audi', year: 2020 },
+                { name: 'Mazda', year: 2014 }
             ],
             pageTitle: 'React components',
             showCars: false
         };
     }
-
-
 
     toggleCarsHandler = () =>{
         this.setState({
