@@ -5,6 +5,16 @@ import PropTypes from 'prop-types'
 
 class Car extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.inputRef = React.createRef()
+    }
+
+    componentDidMount() {
+        this.inputRef.current.focus()
+    }
+
     render() {
         const inputClasses = [classes.input];
         if (this.props.name !== ''){
@@ -22,6 +32,7 @@ class Car extends React.Component {
                 <h2>Car name: {this.props.name}</h2>
                 <p>Year: <strong>{this.props.year}</strong></p>
                 <input
+                    ref={this.inputRef}
                     className={inputClasses.join(' ')}
                     type="text"
                     onChange={this.props.onChangeName}
