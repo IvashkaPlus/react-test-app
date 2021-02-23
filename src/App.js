@@ -1,18 +1,26 @@
 import React, {Component} from 'react';
 import './App.css';
 import Car from "./Car/Car";
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+import Counter from "./Counter/Counter";
+
 
 class App extends Component {
 
-    state = {
-        cars: [
-            { name: 'Ford', year: 2018 },
-            { name: 'Audi', year: 2020 },
-            { name: 'Mazda', year: 2014 }
-        ],
-        pageTitle: 'React components',
-        showCars: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            cars: [
+                { name: 'Ford', year: 2018 },
+                // { name: 'Audi', year: 2020 },
+                // { name: 'Mazda', year: 2014 }
+            ],
+            pageTitle: 'React components',
+            showCars: false
+        };
+    }
+
+
 
     toggleCarsHandler = () =>{
         this.setState({
@@ -45,13 +53,15 @@ class App extends Component {
         if(this.state.showCars){
             cars = this.state.cars.map((car, index) => {
                 return (
-                    <Car
-                        key = {index}
-                        name={car.name}
-                        year={car.year}
-                        onDelete = {this.deleteHandler.bind(this, index)}
-                        onChangeName = {event => this.changeNameHandler(event.target.value, index)}
-                    />
+                    <ErrorBoundary key = {index}>
+                        <Car
+                            name={car.name}
+                            year={car.year}
+                            onDelete = {this.deleteHandler.bind(this, index)}
+                            onChangeName = {event => this.changeNameHandler(event.target.value, index)}
+                        />
+                    </ErrorBoundary>
+
                 )
             })
         }
@@ -60,7 +70,12 @@ class App extends Component {
             <div style={divStyle}>
                 <h1>{this.state.pageTitle}</h1>
 
-                <button onClick={this.toggleCarsHandler}>
+                <Counter />
+                <hr />
+                <button
+                    onClick={this.toggleCarsHandler}
+                    style={{marginTop: '20px'}}
+                >
                     Toggle cars
                 </button>
 
