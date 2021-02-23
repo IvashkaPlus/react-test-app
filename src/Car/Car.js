@@ -27,9 +27,6 @@ class Car extends React.Component {
             inputClasses.push('red')
         }
 
-
-
-
         return(
             <div className="Car" style={style}>
                 <h2>Car name: {this.props.name}</h2>
