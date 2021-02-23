@@ -1,12 +1,12 @@
 import React from 'react';
 import classes from './Car.module.scss'
 import withClass from "../hoc/withClass";
+import PropTypes from 'prop-types'
 
 class Car extends React.Component {
 
     render() {
         const inputClasses = [classes.input];
-        console.log(classes);
         if (this.props.name !== ''){
             inputClasses.push(classes.green);
             if (this.props.name.length > 4){
@@ -33,5 +33,11 @@ class Car extends React.Component {
     }
 }
 
+Car.propTypes = {
+    name: PropTypes.string,
+    year: PropTypes.number,
+    onChangeName: PropTypes.func,
+    onDelete: PropTypes.func
+};
 
 export default withClass(Car, classes.Car)
